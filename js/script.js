@@ -1,44 +1,60 @@
-function get_computer_choice() {
+function getComputerChoice() {
     const rps = ["ROCK", "PAPER", "SCISSORS"];
-
-    let cpu_choice = rps[Math.floor(Math.random() * rps.length)];
-    console.log(cpu_choice);
-
-    return cpu_choice;
+    return rps[Math.floor(Math.random() * rps.length)];
 }
 
-function get_player_choice(choice) {
-    let upper = choice.toUpperCase();
-
-    console.log(upper);
-    return upper;
+function getPlayerChoice(choice) {
+    return choice.toUpperCase();
 }
 
-function play_round(players_choice, compuetrs_choice) {
+function playRound(playersChoice, computersChoice) {
+    if (playersChoice === computersChoice) {
+        return "draw";
+    } else if ((playersChoice === "ROCK" && computersChoice === "SCISSORS") ||
+               (playersChoice === "PAPER" && computersChoice === "ROCK") ||
+               (playersChoice === "SCISSORS" && computersChoice === "PAPER")) {
+        return "player";
+    } else {
+        return "computer";
+    }
+}
 
-        if (players_choice == compuetrs_choice) {
-            return "It is a draw";
-        } else if (players_choice == "ROCK" && compuetrs_choice == "SCISSORS") {
-            return "Player Wins";
-        } else if (players_choice == "ROCK" && compuetrs_choice == "PAPER") {
-            return "Computer Wins";
-        } else if (players_choice == "PAPER" && compuetrs_choice == "ROCK") {
-            return "Player Wins";
-        } else if (players_choice == "PAPER" && compuetrs_choice == "SCISSORS") {
-            return "Computer Wins";
-        } else if (players_choice == "SCISSORS" && compuetrs_choice == "PAPER") {
-            return "Player Wins";
-        } else if (players_choice == "SCISSORS" && compuetrs_choice == "ROCK") {
-            return "Computer Wins";
-        }else{
-            return "Not Valid";
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        const playerChoice = getPlayerChoice(prompt("Enter Rock, Paper, or Scissors:"));
+        const computerChoice = getComputerChoice();
+        console.log(`Player choice: ${playerChoice}`);
+        console.log(`Computer choice: ${computerChoice}`);
+
+        const result = playRound(playerChoice, computerChoice);
+
+        if (result === "draw") {
+            console.log("It's a draw.");
+        } else if (result === "player") {
+            playerScore++;
+            console.log("Player wins this round.");
+        } else if (result === "computer") {
+            computerScore++;
+            console.log("Computer wins this round.");
+        } else {
+            console.log("Not a valid choice. Try again.");
+            i--; // This ensures that invalid attempts don't count as rounds.
         }
+
+        console.log(`Score - Player: ${playerScore}, Computer: ${computerScore}`);
+    }
+
+    if (playerScore > computerScore) {
+        console.log("Player wins the game!");
+    } else if (computerScore > playerScore) {
+        console.log("Computer wins the game!");
+    } else {
+        console.log("The game ends in a draw!");
+    }
 }
 
 
-let players_choice = get_player_choice("paper");
-let computers_choice = get_computer_choice();
-
-console.log(play_round(players_choice, computers_choice));
-
-
+game();
