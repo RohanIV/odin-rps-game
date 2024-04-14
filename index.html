@@ -15,31 +15,45 @@
 <body>
     <div id="main-container">
         <div id="game-container">
-
+            <h1>ROCK PAPER SCISSORS</h1>
             <div id="game-content">
-                <h1>ROCK PAPER SCISSORS</h1>
-             <div id="test">   
-            <div id="score">
-                <h3>Score</h3>
-                <p>You:</p>
-                <p>vs</p>
-                <p>Com:</p>
-            </div>
-            
-            <div id="game-screen"></div>
-        </div>
 
-            <div id="how-to-play">
-                <h3>How to play</h3>
-                <p>R ~> S</p>
-                <p>P ~> R</p>
-                <p>S ~> P</p>
+                <div id="score">
+                    <h3>Score</h3>
+                    <label>You:</label>
+                    <label id="player-score">0</label>
+                    <p>vs</p>
+                    <label>Com:</label>
+                    <label id="com-score">0</label>
+                    <div id="how-to-play">
+                        <h3>How to play</h3>
+                        <p>🗻 ➡ ✂</p>
+                        <p>📜 ➡ 🗻</p>
+                        <p>✂ ➡ 📜</p>
+                    </div>
+                </div>
+
+                <div id="game-screen">
+                    <div class="players">
+                        <h2>You</h2>
+                        <p>🗻</p>
+                    </div>
+                    <div class="players">
+                        <h2>Computer</h2>
+                        <p>✂</p>
+                    </div>
+                    <div id="message">
+                        <p id="text">Filler Text</p>
+                    </div>
+                </div>
+
+                <div id="button-container">
+                    <button id="rock" value="ROCK">🗻 ROCK</button>
+                    <button id="paper" value="PAPER">📜 PAPER</button>
+                    <button id="scissors" value="SCISSORS">✂ SCISSORS</button>
+                </div>
             </div>
-            <button class="rps-btn">ROCK</button>
-            <button class="rps-btn">PAPER</button>
-            <button class="rps-btn">SCISSORS</button>
         </div>
-    </div>
     </div>
     
     
