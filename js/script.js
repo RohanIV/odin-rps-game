@@ -24,7 +24,7 @@ function game() {
     const com_score = document.getElementById("com-score");
     const message = document.getElementById("text");
     const buttons = document.querySelectorAll("#button-container .rps");
- 
+
     
 
     let playerScore = 0;
@@ -42,7 +42,9 @@ function game() {
 
             const result = playRound(playerChoice, computerChoice);
 
-            if (result === "player") {
+            if (result === "draw") {
+                message.textContent = "It's a draw.";
+            } else if (result === "player") {
                 playerScore++;
                 message.textContent = "You win this round.";
             } else{
